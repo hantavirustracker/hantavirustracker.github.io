@@ -210,6 +210,64 @@ h1 {
   color: #ff9191;
 }
 
+.cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.case-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #2b5a47;
+  border-radius: 8px;
+  background: rgba(12, 30, 24, 0.6);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.case-item:hover {
+  background: rgba(20, 45, 36, 0.8);
+  border-color: #00e5ff;
+}
+
+.case-item.status-confirmed {
+  border-left: 4px solid #ffa500;
+}
+
+.case-item.status-deceased {
+  border-left: 4px solid #ff3b3b;
+  opacity: 0.8;
+}
+
+.case-item.status-monitoring {
+  border-left: 4px solid #f6ff4d;
+}
+
+.case-label {
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #00e5ff;
+  text-transform: uppercase;
+}
+
+.case-country {
+  color: #ceffe8;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.case-location {
+  color: #9ccbb3;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
 @media (max-width: 1100px) {
   .stats-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));

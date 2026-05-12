@@ -16,24 +16,20 @@ import './App.css'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Legend, Filler)
 
-type Severity = 'high' | 'medium' | 'low'
+type CaseStatus = 'CONFIRMED' | 'DECEASED' | 'MONITORING'
 
-type Outbreak = {
+type Case = {
   id: string
+  caseNumber: number
+  status: CaseStatus
+  details: string
+  location: string
+  latitude?: number
+  longitude?: number
   country: string
-  latitude: number
-  longitude: number
-  region: string
-  strain: string
-  cases: number
-  deaths: number
-  suspected: number
+  nationality: string
   dateReported: string
-  dateUpdated: string
-  severity: Severity
-  notes: string
-  source: string
-  sourceUrl: string
+  strain: string
 }
 
 type NewsItem = {
@@ -42,33 +38,53 @@ type NewsItem = {
   source: string
   url: string
   publishedAt: string
-  country: string
-}
-
-type TimelinePoint = {
-  date: string
-  cases: number
-  deaths: number
-  suspected: number
-  countriesAffected: number
-  spreadScore: number
+  country?: string
+  summary?: string
 }
 
 type DataPayload = {
   lastUpdated: string
+  dataSource?: string
+  outbreak?: {
+    name: string
+    strain: string
+    originDate: string
+    relatedEvent?: string
+    exposureMethod?: string
+  }
   globalStats: {
-    totalCases: number
+    totalConfirmed?: number
+    totalExposed?: number
     totalDeaths: number
-    suspectedCases: number
+    totalMonitoring?: number
     affectedCountries: number
     fatalityRate: number
-    caseTrend: string
+    caseTrend?: string
+    totalCases?: number
+    suspectedCases?: number
   }
-  outbreaks: Outbreak[]
-  weeklyTrends: Array<{ week: string; cases: number; deaths: number }>
-  strains: Array<{ name: string; region: string; cases: number; mortality: number }>
-  news: NewsItem[]
-  timeline: TimelinePoint[]
+  cases?: Case[]
+  monitoring?: Case[]
+  outbreaks?: Array<{
+    id: string
+    country: string
+    latitude: number
+    longitude: number
+    region?: string
+    strain?: string
+    cases?: number
+    deaths?: number
+    suspected?: number
+    dateReported?: string
+    dateUpdated?: string
+    severity?: string
+    notes?: string
+    source?: string
+    sourceUrl?: string
+  }>
+  strains?: Array<{ name: string; region: string; cases: number; deaths?: number; mortality: number }>
+  news?: NewsItem[]
+  weeklyTrends?: Array<{ week: string; cases: number; deaths: number }>
 }
 
 const DOGE_ADDRESS = 'DFLGr4UwumxE8iMonTNBxq4ZCRFSQmbUwX'
@@ -77,8 +93,8 @@ const SOL_ADDRESS = 'EJRnh4xfA8SxcNZSR6hMsoTFPQnHAqA7sxBan19btcbE'
 function App() {
   const [data, setData] = useState<DataPayload | null>(null)
   const [search, setSearch] = useState('')
-  const [severity, setSeverity] = useState<'all' | Severity>('all')
-  const [selected, setSelected] = useState<Outbreak | null>(null)
+  const [statusFilter, setStatusFilter] = useState<'all' | CaseStatus>('all')
+  const [selected, setSelected] = useState<Case | null>(null)
   const [copyMsg, setCopyMsg] = useState('')
   const [error, setError] = useState('')
   const mapRef = useRef<LeafletMap | null>(null)
@@ -99,20 +115,25 @@ function App() {
     load()
   }, [])
 
-  const filteredOutbreaks = useMemo(() => {
+  const allCases = useMemo(() => {
     if (!data) return []
+    const confirmed = data.cases || []
+    const monitoring = data.monitoring || []
+    return [...confirmed, ...monitoring]
+  }, [data])
+
+  const filteredCases = useMemo(() => {
     const q = search.trim().toLowerCase()
-    return data.outbreaks.filter((item) => {
+    return allCases.filter((c) => {
       const qMatch =
         q.length === 0 ||
-        item.country.toLowerCase().includes(q) ||
-        item.region.toLowerCase().includes(q) ||
-        item.strain.toLowerCase().includes(q) ||
-        item.notes.toLowerCase().includes(q)
-      const sMatch = severity === 'all' || item.severity === severity
-      return qMatch && sMatch
+        c.country.toLowerCase().includes(q) ||
+        c.location.toLowerCase().includes(q) ||
+        c.details.toLowerCase().includes(q)
+      const statusMatch = statusFilter === 'all' || c.status === statusFilter
+      return qMatch && statusMatch
     })
-  }, [data, search, severity])
+  }, [allCases, search, statusFilter])
 
   useEffect(() => {
     if (!mapContainerRef.current || !data) return
@@ -131,39 +152,49 @@ function App() {
     markersRef.current.forEach((m) => mapRef.current?.removeLayer(m))
     markersRef.current = []
 
-    filteredOutbreaks.forEach((o) => {
-      const color = o.severity === 'high' ? '#ff3b3b' : o.severity === 'medium' ? '#f6ff4d' : '#30ff90'
-      const marker = L.circleMarker([o.latitude, o.longitude], {
-        radius: 7,
+    filteredCases.forEach((c) => {
+      // Only add to map if coordinates exist
+      if (!c.latitude || !c.longitude) return
+      
+      const colorMap: Record<CaseStatus, string> = {
+        DECEASED: '#ff3b3b',
+        CONFIRMED: '#ffa500',
+        MONITORING: '#f6ff4d',
+      }
+      const color = colorMap[c.status]
+      
+      const marker = L.circleMarker([c.latitude, c.longitude], {
+        radius: c.status === 'DECEASED' ? 8 : 6,
         color,
         fillColor: color,
-        fillOpacity: 0.9,
+        fillOpacity: 0.8,
         weight: 1,
       })
         .addTo(mapRef.current as LeafletMap)
         .bindPopup(
-          `<strong>${o.country}</strong><br>${o.region}<br>Cases: ${o.cases} | Deaths: ${o.deaths}<br>${o.dateUpdated}`,
+          `<strong>${c.country}</strong><br><strong>Status:</strong> ${c.status}<br><strong>Location:</strong> ${c.location}<br><strong>Details:</strong> ${c.details.substring(0, 50)}...`,
         )
-        .on('click', () => setSelected(o))
+        .on('click', () => setSelected(c))
 
       markersRef.current.push(marker)
     })
-  }, [data, filteredOutbreaks])
+  }, [data, filteredCases])
 
   const topAlert = useMemo(() => {
-    return filteredOutbreaks.find((x) => x.severity === 'high') ?? filteredOutbreaks[0] ?? null
-  }, [filteredOutbreaks])
+    const deceased = allCases.filter((c) => c.status === 'DECEASED')
+    return deceased.length > 0 ? deceased[0] : allCases[0] ?? null
+  }, [allCases])
 
-  const latestNews = useMemo(() => (data?.news ?? []).slice(0, 12), [data])
+  const latestNews = useMemo(() => (data?.news ?? []).slice(0, 10), [data])
 
   const timelineLineData = useMemo(() => {
-    const timeline = data?.timeline ?? []
+    const trends = data?.weeklyTrends ?? []
     return {
-      labels: timeline.map((p) => p.date),
+      labels: trends.map((p) => p.week),
       datasets: [
         {
           label: 'Cases',
-          data: timeline.map((p) => p.cases),
+          data: trends.map((p) => p.cases),
           borderColor: '#30ff90',
           backgroundColor: 'rgba(48,255,144,0.17)',
           fill: true,
@@ -171,7 +202,7 @@ function App() {
         },
         {
           label: 'Deaths',
-          data: timeline.map((p) => p.deaths),
+          data: trends.map((p) => p.deaths),
           borderColor: '#ff3b3b',
           backgroundColor: 'rgba(255,59,59,0.12)',
           fill: true,
@@ -181,38 +212,23 @@ function App() {
     }
   }, [data])
 
-  const spreadLineData = useMemo(() => {
-    const timeline = data?.timeline ?? []
+  const caseStatusChart = useMemo(() => {
+    const confirmed = allCases.filter((c) => c.status === 'CONFIRMED').length
+    const deceased = allCases.filter((c) => c.status === 'DECEASED').length
+    const monitoring = allCases.filter((c) => c.status === 'MONITORING').length
     return {
-      labels: timeline.map((p) => p.date),
+      labels: ['Confirmed', 'Deceased', 'Monitoring'],
       datasets: [
         {
-          label: 'Spread Score',
-          data: timeline.map((p) => p.spreadScore),
-          borderColor: '#00e5ff',
-          backgroundColor: 'rgba(0,229,255,0.16)',
-          fill: true,
-          tension: 0.2,
-        },
-      ],
-    }
-  }, [data])
-
-  const countryBarData = useMemo(() => {
-    const top = [...filteredOutbreaks].sort((a, b) => b.cases - a.cases).slice(0, 12)
-    return {
-      labels: top.map((x) => x.country),
-      datasets: [
-        {
-          label: 'Cases by Country',
-          data: top.map((x) => x.cases),
-          borderColor: '#30ff90',
-          backgroundColor: 'rgba(48,255,144,0.45)',
+          label: 'Case Status',
+          data: [confirmed, deceased, monitoring],
+          backgroundColor: ['#ffa500', '#ff3b3b', '#f6ff4d'],
+          borderColor: ['#ffaa00', '#ff1a1a', '#ffdd00'],
           borderWidth: 1,
         },
       ],
     }
-  }, [filteredOutbreaks])
+  }, [allCases])
 
   const chartOptions = {
     responsive: true,
@@ -260,40 +276,43 @@ function App() {
         <p className="tag">HANTAVIRUS LIVE MATRIX</p>
         <h1>Global Infection Intelligence Grid</h1>
         <p>
-          Real-source outbreak signals ingested every 30 minutes. Search countries, review spread timeline,
-          and inspect latest reports.
+          {data?.dataSource || 'Real-source outbreak signals'} ingested every 30 minutes. Track individual cases,
+          review status breakdown, and inspect latest reports.
         </p>
+        {data?.outbreak && <p style={{ fontSize: '0.85em', marginTop: '0.5em', color: '#00e5ff' }}>
+          Current: {data.outbreak.name} ({data.outbreak.strain}) - {data.outbreak.exposureMethod}
+        </p>}
       </header>
 
       {topAlert && (
         <section className="alert" aria-live="polite">
-          ALERT: {topAlert.country} | {topAlert.cases} cases | {topAlert.deaths} deaths | Updated {topAlert.dateUpdated}
+          ALERT: Case #{topAlert.caseNumber} | Status: {topAlert.status} | {topAlert.country} ({topAlert.location}) | {topAlert.details}
         </section>
       )}
 
       <section className="stats-grid" aria-label="Global statistics">
-        <article><h2>{data.globalStats.totalCases}</h2><p>Total Cases</p></article>
-        <article><h2>{data.globalStats.totalDeaths}</h2><p>Total Deaths</p></article>
-        <article><h2>{data.globalStats.suspectedCases}</h2><p>Suspected Cases</p></article>
-        <article><h2>{data.globalStats.affectedCountries}</h2><p>Affected Countries</p></article>
-        <article><h2>{data.globalStats.fatalityRate}%</h2><p>Fatality Rate</p></article>
-        <article><h2>{filteredOutbreaks.length}</h2><p>Matching Outbreaks</p></article>
+        <article><h2>{data?.globalStats.totalConfirmed || data?.globalStats.totalCases || 0}</h2><p>Confirmed Cases</p></article>
+        <article><h2>{data?.globalStats.totalDeaths || 0}</h2><p>Deceased</p></article>
+        <article><h2>{data?.globalStats.totalMonitoring || 0}</h2><p>Monitoring</p></article>
+        <article><h2>{data?.globalStats.totalExposed || 0}</h2><p>Total Exposed</p></article>
+        <article><h2>{data?.globalStats.affectedCountries || 0}</h2><p>Affected Countries</p></article>
+        <article><h2>{data?.globalStats.fatalityRate || 0}%</h2><p>Fatality Rate</p></article>
       </section>
 
       <section className="filters">
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search country, region, strain"
-          aria-label="Search outbreaks by country"
+          placeholder="Search country, location, case details"
+          aria-label="Search cases"
         />
-        <select value={severity} onChange={(e) => setSeverity(e.target.value as 'all' | Severity)}>
-          <option value="all">All severity</option>
-          <option value="high">High</option>
-          <option value="medium">Medium</option>
-          <option value="low">Low</option>
+        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value as 'all' | CaseStatus)}>
+          <option value="all">All statuses</option>
+          <option value="CONFIRMED">Confirmed</option>
+          <option value="DECEASED">Deceased</option>
+          <option value="MONITORING">Monitoring</option>
         </select>
-        <span className="updated">Last updated: {new Date(data.lastUpdated).toLocaleString()}</span>
+        <span className="updated">Last updated: {data && new Date(data.lastUpdated).toLocaleString()}</span>
       </section>
 
       <section className="workspace">
@@ -317,34 +336,54 @@ function App() {
 
       <section className="workspace">
         <article className="card">
-          <h3>Timeline of Infections and Spread</h3>
+          <h3>Timeline of Infections</h3>
           <Line data={timelineLineData} options={chartOptions} />
         </article>
 
         <article className="card">
-          <h3>Spread Intensity Timeline</h3>
-          <Line data={spreadLineData} options={chartOptions} />
+          <h3>Case Status Breakdown</h3>
+          <Bar data={caseStatusChart} options={chartOptions} />
         </article>
       </section>
 
       <section className="workspace">
         <article className="card">
-          <h3>Cases by Country</h3>
-          <Bar data={countryBarData} options={chartOptions} />
+          <h3>Cases by Status</h3>
+          <div className="cases-list">
+            {filteredCases.length === 0 ? (
+              <p>No cases match your filters.</p>
+            ) : (
+              filteredCases.map((c) => (
+                <div
+                  key={c.id}
+                  className={`case-item status-${c.status.toLowerCase()}`}
+                  onClick={() => setSelected(c)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && setSelected(c)}
+                >
+                  <span className="case-label">#{c.caseNumber} · {c.status}</span>
+                  <span className="case-country">{c.country}</span>
+                  <span className="case-location">{c.location}</span>
+                </div>
+              ))
+            )}
+          </div>
         </article>
 
         <article className="card">
-          <h3>Selected Outbreak</h3>
+          <h3>Case Details</h3>
           {selected ? (
             <div className="detail">
-              <p><strong>{selected.country}</strong> - {selected.region}</p>
-              <p>Cases: {selected.cases} | Deaths: {selected.deaths} | Suspected: {selected.suspected}</p>
-              <p>Strain: {selected.strain} | Severity: {selected.severity}</p>
-              <p>{selected.notes}</p>
-              <a href={selected.sourceUrl} target="_blank" rel="noreferrer">Open source report</a>
+              <p><strong>Case #{selected.caseNumber} · {selected.status}</strong></p>
+              <p><strong>Location:</strong> {selected.location}, {selected.country}</p>
+              <p><strong>Nationality:</strong> {selected.nationality || 'Unknown'}</p>
+              <p><strong>Details:</strong> {selected.details}</p>
+              <p><strong>Strain:</strong> {selected.strain}</p>
+              <p><strong>Reported:</strong> {new Date(selected.dateReported).toLocaleString()}</p>
             </div>
           ) : (
-            <p>Click any map marker to inspect details.</p>
+            <p>Click any case to inspect details.</p>
           )}
         </article>
       </section>
