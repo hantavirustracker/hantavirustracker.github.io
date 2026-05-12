@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hantavirustracker.github.io/sitemap.xml
