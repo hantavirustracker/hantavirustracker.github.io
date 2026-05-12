@@ -23,3 +23,8 @@ backend/target
 *.njsproj
 *.sln
 *.sw?
+
+# Python local env
+.venv/
+venv/
+__pycache__/
