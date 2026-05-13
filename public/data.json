@@ -1,368 +1,64 @@
 {
-  "lastUpdated": "2026-05-12T23:31:41.604070+00:00",
+  "lastUpdated": "2026-05-12T14:30:00Z",
+  "dataSource": "ArcGIS Hantavirus Dashboard / Official Health Authorities",
+  "outbreak": {
+    "name": "ANDV Hantavirus 2026 - MV Hondius Ship-Related Outbreak",
+    "strain": "ANDV (Andes Virus)",
+    "originDate": "2026-04-24",
+    "relatedEvent": "MV Hondius expedition cruise ship",
+    "exposureMethod": "Ship-based exposure during expedition"
+  },
   "globalStats": {
-    "totalCases": 0,
-    "totalDeaths": 0,
-    "suspectedCases": 0,
-    "affectedCountries": 2,
-    "fatalityRate": 0,
+    "totalConfirmed": 11,
+    "totalExposed": 173,
+    "totalDeaths": 4,
+    "totalMonitoring": 27,
+    "affectedCountries": 13,
+    "fatalityRate": 36.4,
     "caseTrend": "rising"
   },
-  "outbreaks": [
-    {
-      "id": "outbreak-argentina",
-      "country": "Argentina",
-      "latitude": -38.4161,
-      "longitude": -63.6167,
-      "region": "Argentina",
-      "strain": "Unspecified Hantavirus",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "dateReported": "2026-05-10",
-      "dateUpdated": "2026-05-12",
-      "severity": "low",
-      "notes": "How a Small Argentina Town Handled Hantavirus Outbreak in 2018&nbsp;&nbsp;TODAY.com",
-      "source": "Google News EN",
-      "sourceUrl": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNUFhkVjJ3ZmhCeUFacmRzWlJQblE5U0NWTGZsaEh1U2hrNWJiTnJyaWlQZGFScG5zV0RVSmN3aXVrNXh3ckdOMklZX25oUkQwUG5qQkpIbzFyNlFQTVdoeWdFeFlDb28xdEMwRjVaN0lKb0F1NXozcVRqWTU5MzZURTlTRk1uRk9kZ2NGb2o4amdodl9mVUVQU2hwWXVQN18zQjBN?oc=5"
-    },
-    {
-      "id": "outbreak-united-states",
-      "country": "United States",
-      "latitude": 37.0902,
-      "longitude": -95.7129,
-      "region": "United States",
-      "strain": "Unspecified Hantavirus",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "dateReported": "2026-05-10",
-      "dateUpdated": "2026-05-12",
-      "severity": "low",
-      "notes": "See inside quarantine unit after hantavirus outbreak&nbsp;&nbsp;USA Today",
-      "source": "Google News EN",
-      "sourceUrl": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPT2ZoM1ZPNkpEaDdYWllNdXdaX2VBMENMX0hkajFkYzFodUNMQkxGRC1DeFA5UXJhSEY4WEd5VkZSYXNXWHptaUM3RDEzMXd6R0NmQmZtd05ibEJ5XzRUdjNUS0pzOV9WVHE5aWNSQURkY2E4M2phOWw1LU12akJXMTg2LUhjQm5xMkR6ai02SllqdnpYRkQ5emp1LWh2SkduNmY3T3dpMG81NGlRVDY4OFNfam15aWwwdFJJRw?oc=5"
-    }
+  "cases": [
+    {"id": "case-1", "caseNumber": 1, "status": "DECEASED", "details": "Initial case from MV Hondius", "location": "MV HONDIUS (Ship)", "latitude": -28.3, "longitude": 32.88, "country": "South Africa (Ship origin)", "nationality": "Unknown", "dateReported": "2026-04-24", "strain": "ANDV"},
+    {"id": "case-2", "caseNumber": 2, "status": "DECEASED", "details": "Wife of initial case, confirmed case", "location": "JOHANNESBURG", "latitude": -26.2023, "longitude": 28.0436, "country": "South Africa", "nationality": "Unknown", "dateReported": "2026-04-26", "strain": "ANDV"},
+    {"id": "case-3", "caseNumber": 3, "status": "CONFIRMED", "details": "Confirmed Hantavirus, British National", "location": "JOHANNESBURG", "latitude": -26.2023, "longitude": 28.0436, "country": "South Africa", "nationality": "British", "dateReported": "2026-05-01", "strain": "ANDV"},
+    {"id": "case-4", "caseNumber": 4, "status": "DECEASED", "details": "German National, ship passenger, confirmed hantavirus", "location": "MV HONDIUS", "latitude": -28.3, "longitude": 32.88, "country": "Ship", "nationality": "German", "dateReported": "2026-05-02", "strain": "ANDV"},
+    {"id": "case-5", "caseNumber": 5, "status": "CONFIRMED", "details": "Ship crew, doctor, evacuated from ship, confirmed hantavirus", "location": "NETHERLANDS", "latitude": 52.1326, "longitude": 5.2913, "country": "Netherlands", "nationality": "Dutch", "dateReported": "2026-05-03", "strain": "ANDV"},
+    {"id": "case-6", "caseNumber": 6, "status": "CONFIRMED", "details": "Dutch crew member, confirmed positive", "location": "NETHERLANDS", "latitude": 52.1326, "longitude": 5.2913, "country": "Netherlands", "nationality": "Dutch", "dateReported": "2026-05-04", "strain": "ANDV"},
+    {"id": "case-7", "caseNumber": 7, "status": "CONFIRMED", "details": "Departed ship, Swiss national, confirmed case", "location": "ZURICH", "latitude": 47.3769, "longitude": 8.5417, "country": "Switzerland", "nationality": "Swiss", "dateReported": "2026-05-05", "strain": "ANDV"},
+    {"id": "case-8", "caseNumber": 8, "status": "CONFIRMED", "details": "British national, onboard ship departed, CONFIRMED", "location": "TRISTAN DA CUNHA", "latitude": -37.1, "longitude": -12.3, "country": "Tristan da Cunha", "nationality": "British", "dateReported": "2026-05-06", "strain": "ANDV"},
+    {"id": "case-9", "caseNumber": 9, "status": "CONFIRMED", "details": "French passenger, started experiencing symptoms on repatriation flight back to France on 10 May", "location": "FRANCE", "latitude": 46.2276, "longitude": 2.2137, "country": "France", "nationality": "French", "dateReported": "2026-05-10", "strain": "ANDV"},
+    {"id": "case-10", "caseNumber": 10, "status": "CONFIRMED", "details": "Disembarked ship with Americans on May 10. No symptoms and tested positive", "location": "UNITED STATES", "latitude": 37.0902, "longitude": -95.7129, "country": "United States", "nationality": "American", "dateReported": "2026-05-10", "strain": "ANDV"},
+    {"id": "case-11", "caseNumber": 11, "status": "CONFIRMED", "details": "Onboard MV Hondius, disembarked May 10 and tested positive with no symptoms", "location": "SPAIN", "latitude": 40.4637, "longitude": -3.7492, "country": "Spain", "nationality": "Unknown", "dateReported": "2026-05-10", "strain": "ANDV"}
   ],
+  "monitoring": [
+    {"id": "monitor-1", "status": "MONITORING", "details": "Flight attendant, symptomatic", "location": "NETHERLANDS", "country": "Netherlands"},
+    {"id": "monitor-2", "status": "MONITORING", "details": "Traveled on same flight from St Helena to Johannesburg on April 25", "location": "SINGAPORE", "country": "Singapore"},
+    {"id": "monitor-3", "status": "MONITORING", "details": "Onboard ship, departed April 24th", "location": "GEORGIA, USA", "country": "United States"},
+    {"id": "monitor-4", "status": "MONITORING", "details": "Onboard ship, departed April 24th", "location": "GEORGIA, USA", "country": "United States"},
+    {"id": "monitor-5", "status": "MONITORING", "details": "Onboard ship, departed April 24th", "location": "UNITED KINGDOM", "country": "United Kingdom"},
+    {"id": "monitor-6", "status": "MONITORING", "details": "Onboard ship, departed April 24th", "location": "UNITED KINGDOM", "country": "United Kingdom"},
+    {"id": "monitor-7", "status": "MONITORING", "details": "Onboard ship, departed April 24th", "location": "ARIZONA, USA", "country": "United States"},
+    {"id": "monitor-8", "status": "MONITORING", "details": "Onboard ship, departed on April 24th", "location": "CANADA", "country": "Canada"},
+    {"id": "monitor-9", "status": "MONITORING", "details": "Onboard ship, departed April 24th", "location": "CANADA", "country": "Canada"},
+    {"id": "monitor-10", "status": "MONITORING", "details": "Onboard ship, departed April 24th", "location": "CANADA", "country": "Canada"},
+    {"id": "monitor-11", "status": "MONITORING", "details": "Onboard ship, departed April 24th", "location": "CANADA", "country": "Canada"},
+    {"id": "monitor-12", "status": "MONITORING", "details": "Onboard ship, departed April 24th", "location": "TEXAS", "country": "United States"},
+    {"id": "monitor-13", "status": "MONITORING", "details": "Onboard ship, departed April 24th", "location": "TEXAS", "country": "United States"},
+    {"id": "monitor-14", "status": "MONITORING", "details": "Undisclosed number, onboard ship & departed April 24th", "location": "CALIFORNIA", "country": "United States"}
+  ],
+  "strains": [{"name": "ANDV (Andes Virus)", "region": "Global (Ship-related)", "cases": 11, "deaths": 4, "mortality": 36.4}],
   "weeklyTrends": [
-    {
-      "week": "05-06",
-      "cases": 0,
-      "deaths": 0
-    },
-    {
-      "week": "05-07",
-      "cases": 0,
-      "deaths": 0
-    },
-    {
-      "week": "05-08",
-      "cases": 0,
-      "deaths": 0
-    },
-    {
-      "week": "05-09",
-      "cases": 0,
-      "deaths": 0
-    },
-    {
-      "week": "05-10",
-      "cases": 0,
-      "deaths": 0
-    },
-    {
-      "week": "05-11",
-      "cases": 0,
-      "deaths": 0
-    },
-    {
-      "week": "05-12",
-      "cases": 11,
-      "deaths": 0
-    }
-  ],
-  "strains": [
-    {
-      "name": "Unspecified Hantavirus",
-      "region": "Global",
-      "cases": 0,
-      "mortality": 0
-    }
+    {"week": "04-24", "cases": 1, "deaths": 1},
+    {"week": "04-26", "cases": 1, "deaths": 1},
+    {"week": "05-01", "cases": 1, "deaths": 0},
+    {"week": "05-02", "cases": 1, "deaths": 1},
+    {"week": "05-03", "cases": 1, "deaths": 0},
+    {"week": "05-04", "cases": 1, "deaths": 0},
+    {"week": "05-05", "cases": 1, "deaths": 0},
+    {"week": "05-06", "cases": 1, "deaths": 0},
+    {"week": "05-10", "cases": 3, "deaths": 0}
   ],
   "news": [
-    {
-      "id": "r-6269761218760859600",
-      "title": "Carlos Ferello, el \u00fanico argentino en el crucero del hantavirus: \"Por ahora no tengo s\u00edntomas\" - Perfil",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOYzlNTFp2ejBpWUdPU0d2bkJpZlpRQVdyRm5MbHRNSnBITzdDYldQekhYemNFX29adjF3SXZMT2JzV0pEZ2pERFlHYTYtZ3BOUXl1R3d3OUoyNDJxbDVEV3hLMjRtaDg3UDRycVZ0NUF1VjY4NnFpYURyT2ExdVlleUlQMGloNUpNcDV3dWhEVkpTQ0txNWVhOGdMdThnYzZPZEZvU0lSNU9Da3NfemZTa1F3S1RfYW9SZ3p6S04wb3ZIRExJbE5lZzNDMVZBNFXSAdQBQVVfeXFMUFVvVzMzazY4azZSN3YyQ2RaOXBkMTBUOFJsdmc1QjFGMUZjV190cnJPbmhXWDNqUE5hT2VKRS1ZTURQcURoOUo5c0M5Ty1DY1Z5TGhDaEI4bGUzMkVJcmVDTlFRRWNXYXhrY0gzZzVhaDhuQ0xBckRPbndYYXVobktTYThObTZSR0MwX3JQWGFSemJKdmlfZUEyai1peVU2a3BmMzZ6RDdEMGQ1Y3FGVmg0aklHVE1adW9zRTN4UlYzUkRKY1lES1RjbEVXMUJ1S25RblE?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.406424+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-3506006045095493662",
-      "title": "Europa refuerza medidas contra el hantavirus y la OMS descarta un brote mayor - Yahoo",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOVm1jS0tFV3Y0WWxiUDltQkI2WWRWSnE2SFJScS00S25ERjZUNzY1T1lBdS1tR2ZXTHU1b050RkdyZVJmRlNPZmw2aXFWUUFLdlc4aHJXQ0VMU2p1dXFzQ1dkd3ZWVGhVRENoWThjMlNhWHVLSkUySF9RallfTHVmRmhoQTRPeV9wcjZkeDczaw?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.406171+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-2825377882737421724",
-      "title": "Hantavirus: Tierra del Fuego descarta que el brote en un crucero se haya originado en la isla - La Voz del Interior",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPQTNXV2RpV1pMWENWSkFxS2NWN2JxZ3ozbWFiN2pCWGlEYzhsUmpFWXZmSmNFckNHUzQ0M2czUmdxQWxHOUVpRl9KNGtEaTBxbW10QUFSVmhxREFXQUd3RVZwSy1LendxUnNCMkxnUUh3bkFKWTVXS191bFF1NUo4MWptRmZXOExTODc2RHBMaEI0NVo5RmhRblg2SkM4LVJfbUJieG5OdDItR3dxVWdtREZDWFRaUQ?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.405891+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-7361635155445070594",
-      "title": "El instituto Malbr\u00e1n profundizar\u00e1 la investigaci\u00f3n sobre hantavirus en Ushuaia tras el brote en el crucero - Infobae",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQdHlmQkhvMXJLYlhORy1Vb1VNYmNNblNIM2ZHbjNFZ0NpbGhNcmN3dFVySzhTb0E3dDVYR3BfWXZSZUNONm16TlJobDNob015MWlFMkJqQ3A2WTF1aTQtamY4T3VXem5RYVVfZC1YQ2Z0QjNSYVF2c0pxM2lXWlVHbUxpbkVIRTRBcnAzbk93Z3FHNFd1MWlVU3hrZUFQV2hfdTgxM1k2amdYa01sUlhxeC01TnRLVUU3SGtPc0RFWEV0ZGlfMEFoY1ZxeXMyQ0hFUEZsWlZoMDBHbkM0ZE440gH6AUFVX3lxTE1HSTdHSjRHbnl3S3ZCcVh5am15Y3k5SGpnQkRwU1BKQzE4ZlBKZWxjaWlsZ2g3MEhwV2hFQno4MW9KVmVFVVVfZVFlZlVkckJtUlJoMDUtb2hidFRVY3VtLWdONnB5enlydDVJMXg3dUpkZnBrVkhNdFB6dVBvUUpyekgtWWNwYkdTRnpzU3FvVmxodXNCeUZEM3lWQzJUWXRDMnAzY2R0bDNULUNkYU9Bell2TlhYYjFsWEdidTZTeGs1X1JDMHdTcnItbDE0eTA1dHhsbWp0ZUYwVXVHWk5lTlREVTd4WHJJbXdxellBOF9XS1NuemdjMFE?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.405464+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-2193434108332221071",
-      "title": "42 d\u00edas aislados: por qu\u00e9 la cuarentena del hantavirus es la m\u00e1s larga de todas - Clarin.com",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPXzRFTUtKMFdyUXQzWlV4R1FPU21CSUltVDBlNjF0akhKdmNHMW5qMTRxVGFvQkFSWW00dFljMUdwMS1Dem1NN2RBcGdzcUZZRjZObTlnOGtKV0xRNFBxMzJLUjB6MkZBV3lHMU05NEV3aU9fT3N5T2MwRUtLTnNuRFBQenRHeDMxOTVlWUIycWlGQTl2LTQ2NnVteUJsR1dGRUE?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.405180+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-7675149583544307586",
-      "title": "Europa refuerza medidas contra el hantavirus y la OMS descarta un brote mayor - France 24",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPSUlnMDNQRHFRZHAwYTUwbktFbXAzY2Q4eUp1eW8yMGlLUzBndFZ2Z2pnMUNYSnNDMmJFaHZLSUxQYS1yR3RwYzVNMkcyUklJcHp1d1AwVE5IZl9mQWdoMVNEUXlFN1BGRVBHeHhFYW9vd1NFd0paRUdzb3h0MjdRLXEyUGNpeHI1Z2d1RlFfUU9kb2JRY2FSV0d0dVppTmQ2VXJFajFJUXluZGVDQVktNjM5eTd5aUJjeFlrTw?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.404908+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-7403914650132348471",
-      "title": "Qu\u00e9 se sabe del hantavirus Andes en seis preguntas - Sinc",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNc0lmNGJCUjlRbWl5Um5nSFRQdE9Lb2MxYVNTMXNRaTNJYnZfSVhnVk91R2UteE5vMmgyX3A4RlRvTGgtNk1jTUs2MWhVVGotczlEeUxwbC1XcFM3dHJIeTVGeVl6dExNdjMxREd5eEY1cWxJUzg3UER3NUxERjFwTDRFMllteHpBOFFxLWRn?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.404690+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-6709547703460523471",
-      "title": "Monitorean a tres neoyorquinos del crucero MV Hondius tras brote de hantavirus - Infobae",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPNXpYajRNdkdyV3k3S0w1ZFplU1A2RFNhSW1pN0UyQW1WODdpTmd6SzhiZXNoU3RnbFBRWTJXYWk4SW9YM3BiTW5IUFhSS0ZKTTRBdUp0dVJIbTdnZktEVGFTZ1BQQlNOM0MzRUtNanBMekc4MDFhb1dSa2wzdDg4S0h1UU5yU2xncWZma2piYXNxcVdYY3RjRzlDLUx4TmlFSGpIT2dGUnhqcy1SX1RPSmhJN3RXVjRZUF9WMDR6akppZ0h5SEZlSNIB4wFBVV95cUxNaURnMG0xelAyRjFTSzJFUmV1cWpfSjhRVGRRcWdaNlFTRE50X2gtdkYzaV9qTmlEV0dPeTNoY0xoUHlUbVExYmszSFJDd2Y1NEVxOFRwYXR0U2sxSE5jS3VEM09kME5VdFpaZTByQ0ExYk5MOG85cE5nRHB3bjVCLTJQLTJvSWxOdXRIcVljcUlEWUdHMFN3Z0RsUkdPLXZpcVlua1VBU0o0dnV4UWYwUDBYVnZQdjVpQTR5Zk95OVp5Vm1xSGpXRTJCNGZwYVBzSXJwMGZuWG9laG53bFFXbG53SQ?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.404298+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-3696750770574231813",
-      "title": "La OPS realiz\u00f3 sesi\u00f3n de preguntas y respuestas sobre hantavirus tras el brote en un crucero - Pan American Health Organization (PAHO)",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQU2hrcjZ2cV9zMTI1bUdtN3dOVUp4bUI5YXlMNHFjQTl3eGJfOUxYWVlvOTIzaVA0blVYMmQ3eW04aFhWSFl4bGVYWGEwVkkzd2U4QTluUl9ZWkQySHV6aDRmTUcwMTdYcHVMU3ZybHBTanhMV1YxTFhFdzFOSy1scFVUckQ4UlpuR2NFOWQyUnBxcHlGd2pGLTlkYkVxUGpZT1ZETVFjMEo2b052Rjg1dC1YUnBhRWp3NVE?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.403995+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-8697139226705599745",
-      "title": "Gu\u00eda sobre el hantavirus: contagio, s\u00edntomas y riesgo del brote - Yahoo",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPT3M4SXk5Skd0Z1ItT3BZUGd2UTJJUkc5blZHUHJVRkFMTTc1S1VDRDNXT1I0RU91WDZnT3ZqTG1vTW0wbXRWVXNnRS00MVpmaGZNeVV4RjdiVFRNM0ZFZXFfQnFpd2pmYVhsUjZEQjcwcWN1Z2pSWnRhMG41Y3liR0JXaEFfQnhhSHNLWG83MDlUQVBFSUMzR09KUQ?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.403751+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-1842898869562085196",
-      "title": "\"En Tierra del Fuego no tenemos casos de hantavirus\": la provincia argentina desde donde zarp\u00f3 el crucero niega ser la causa de la crisis que alerta a Europa - BBC",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5USndPNEpyT201R0hwWEVLV3VuZTVTOFlaQ0ZvWW9YMXJFR3dhQmNJR2tyWXIyUWNYOFk0enJFcGMzVnNyNTBxSzJ5UjdJLTA2ckJrdG8taElYdTjSAWBBVV95cUxQUXBBRmllY205WnFKbzBvWUVoSG5wOUJzTm9UVVRZMllyVS1vUTJ0OUlEZFhqMnRQNFdOa2dRc1RmY1ltWG9DTEs0VFVnOXRGeXprWm9TTnM0aTNBdXBHbVU?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.403602+00:00",
-      "country": "Argentina"
-    },
-    {
-      "id": "r-3106289629620573584",
-      "title": "Brote de hantavirus: La carrera internacional para rastrear a los pasajeros que se bajaron antes de que se descubrieran los contagios en un crucero - BBC",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBzbVJ3RnhUNU95S042SDYtRThGWmE3eUpaSGhwbndXUDJDdDY1cDY2Z3RtQS03N0N4WkxUanI5bXJHQ043YnNqMm9fUGdiWXBFaWhTMjNYeVozMnfSAWBBVV95cUxOeFoxY2pOSzk5Sll3bzJHTWU4dHhkb19nMVB6SGJYMnlYTjhMUjVWU0licndiS3lqSnA5WUNqd0hVeDJPQjAxZGJKYVFTOWpuRE9ndnBDV1FJbTZWZVVMS2Y?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.403270+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-7248660959190737954",
-      "title": "El conmovedor mensaje del capit\u00e1n del crucero en el que se detect\u00f3 un brote de hantavirus - TN",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNY1hEQWV6Zkx0Q1pVOWZBM0c2QWZJdlphbm9ybGotaXp0amtzbGFiMUhhVEZTOGpvZFpTOHU5X2pVY01vdTJ5VFk1Z2ZhcE1aQ0hUWnU0TWRCZDB0Rko3V2RLUzFOVGU3NGJmVnl6dGVweXE1MVV5OF9CckhLREJoMlE4VHVVXzZYOV9oZWR2aV9QVE01ZnNhUnp5T0Q0UDlwTlBHSmV5cjRUTGQ2OGFMM0tsWkhrYkpjT1NBeDVRa3NqUXpuY1oteTJZZG41Z9IB4gFBVV95cUxQUTBTTWhuVVlERXhYVFZIWS1DN3pwbXRXTGE0VDduaHN0SFYzWGU1Z21IbllSLWRTUHhVMDBaNmNFSXlqQmY3QWxsX3FQTi1wU3NlZFd4STltdkJjMTVzYW9XUk13MlVPeTZxMkxfUjF5dE1kNkNPQU80bHRELXFlMTlFTDh1WUFIR3pHcUhlRTY1dDRhTWpWcWFwc1pqREZQczVBYnhlOUtBOFIyZFp2aHY2N0hyY2hhZUg2NlZDbmFmYlMwcE9idUpneV9rcWlqeU5RWHBIdmE0SWYzc0x6SGFR?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.402873+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-7374182659006703236",
-      "title": "La EMA confirma que est\u00e1 vigilando activamente el brote de hantavirus junto a otros organismos de la UE - El Globalfarma",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPREFwbVVRRXZBTVlZZDNvcGpuVFZYNk9xNUtzeDFibnE4aDdMZTF4TXZtcnIzSUZScjBqZXdJY2N5U3FTOTFCMXBWNVhabUlLckdEczk0cWlPRDNkdXNYeG44TVBHYUNhTGRzb1pfVTFJbjB4TFJiX081N2FRSW9BNGtaSjd6UFE1dVRSYW9XNmd5OFozUXJwTQ?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.402593+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-7666509241852322202",
-      "title": "Brote de hantavirus: las caracter\u00edsticas que explican por qu\u00e9 no es como la COVID - Gaceta M\u00e9dica",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5iVGJxLUVNU1REUmtOVFdyd3lDbzJVQVlSSHd0ZnlNbTRxODdwSkpzOVEzZVowZ0cyUXJObkZuTGZURFlUbXN5Z0Q0QUM3X0FoUTN5S2liazlfTDZ2T2lyazV4czRMbG54WmpfNkc3Zw?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.402338+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-7505254170669332712",
-      "title": "Brote de hantavirus: qu\u00e9 es el \"d\u00eda cero\" que activ\u00f3 Espa\u00f1a tras los contagios en el crucero - a24.com",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNWXJYQ1FEQ2NEel9xcXloMmFTM3U3WXZzb3ozVGZ5c3F1eXJRRVZVVDFxcU9RdlRMSWhJNGpnNXZBaHp5eU5MNkVjQkpLUWRmcWlvakEyREhuOXVMWEctWUJrVkxiT3dGQjd2VF81X0V2WE5LTkVwck5kU3VOWFNScnlyTUVEWUp3SUpRVUZMQzhRb08zOWZJZmJKZW1WYlBtYk4yQVF3STliYkh5cXBiQjJ1d9IBuAFBVV95cUxPcFotNWI0RjhYVEE5YmFvdW9xTm5OaE5HWnFINEMtdFpFNmRYSXd3eUtzUDlldW1QRVpqcUttM0k1c0dVckY1Z2xfeldCeDFhVjI3ejBBSUxKRkFKOVVkaE5pQW5vc0VzbVZyUkNnc0ZWQUlOcUF3bXdDY1ZmMEhiS05rOC1FLXNDX3U0ZHIxQVF5RzRjd25URlREYWUwQXYwMkNIc0lkMDdoUnpGR2JHRmpKMnJJZWlR?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.401958+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-2716482206346472835",
-      "title": "El hantavirus no es como el covid-19, pero minimizar el riesgo podr\u00eda reactivar la ansiedad pospandemia - CNN en Espa\u00f1ol",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNTW9XN0xiRUMyRmF5SGYzeTVSV2pNU1Bnb09zWWpkLUV0bGZ3ZW12UE9LaGcwY2NwWEF3cDZ0Vng0RzNMS01wem56SUZ3cWQ5Q3B3bDBGTmh2ano1V1dvdTZad1V2UmlieDV2eHJ3WHhfbW1FN19KMjU0ZnpqTVA4V25wNHo4RWhJdGpLbE5NMnRsb0E?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.401668+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-2663719191591616612",
-      "title": "OMS sobre hantavirus: \"El trabajo no ha terminado\" - DW.com",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPSmwxVzQ0RUpBNXRlb0pSaWJYeWhYeXg0ZUhObkF5NUJiVDJVS0ZQdElJZmRLbkc2UV9VSVJUb1RNcUpFRFVnajlhZVdqaUQ0WS1XZmY1V0V0ZVNLdXZRTFpZR0VCd2ZHWEVEQV9PcnphczVKdXBZZ1hmWEhaeDF1OUsyTUI1c2vSAYcBQVVfeXFMTkNCTGVqdDNfaEE3ZURNZXV4MWNsc2hBcTNLaFRkTlNISTFDSkRqNTJaMTNpYmJCVnBnVE4xTGtTRjgxZE40Y1B2RElzZWpKX1NWZVRWeUlEY3p4VkFreWhkUWJUaTFudHZhUEx1cDJiRUdDbXhIQV9hdEFvUlE3NFF4RV9sZzVz?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.401383+00:00",
-      "country": "Unknown"
-    },
-    {
-      "id": "r-4085087172112214161",
-      "title": "La fiesta de 15 que desat\u00f3 EL PEOR BROTE DE HANTAVIRUS en Argentina: 34 casos y una tragedia que hoy vuelve a inquietar - El Destape",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxPOUg0UURyQ182S1lDaUpFSGVaeFFqSFFEdVNPSHd5NmJtaTQwdzVCUGhfcFBwNDBiRHhCRmZKWWpWNEotRUZURWJNanVfQng2QzRwaEsxWWFVUE0zRG1xaTByR1dtMmdkSUFnQmtpQmNrYXU3eGN2NGgzVlJYbjJoelpCMjE4b2VZNXlGT0VkWjdabWRLZ080Y21Kbkg0RjZTWGcxTC1ZUXYxNGV4LWo5dzFOTGpGbVJwS1praW45LWdNeXVyM3UtcUxJY2NYZWlnNDBEOFl2WTlOOGtmTGduNTBXZE1XQkV3dzh6TjB5QXRYbXF6czdOMUdWV2VrUdIB_gFBVV95cUxPOUg0UURyQ182S1lDaUpFSGVaeFFqSFFEdVNPSHd5NmJtaTQwdzVCUGhfcFBwNDBiRHhCRmZKWWpWNEotRUZURWJNanVfQng2QzRwaEsxWWFVUE0zRG1xaTByR1dtMmdkSUFnQmtpQmNrYXU3eGN2NGgzVlJYbjJoelpCMjE4b2VZNXlGT0VkWjdabWRLZ080Y21Kbkg0RjZTWGcxTC1ZUXYxNGV4LWo5dzFOTGpGbVJwS1praW45LWdNeXVyM3UtcUxJY2NYZWlnNDBEOFl2WTlOOGtmTGduNTBXZE1XQkV3dzh6TjB5QXRYbXF6czdOMUdWV2VrUQ?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.401159+00:00",
-      "country": "Argentina"
-    },
-    {
-      "id": "r-6360902834610341246",
-      "title": "Alerta sanitaria por brote de hantavirus en un crucero: contagios, cuarentena y aislamiento en distintos pa\u00edses - LM Neuqu\u00e9n",
-      "source": "Google News ES",
-      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPeUF2ekI0UjJZcHBXVzBJaXprWkl1cTFGM2p1OVdQSmlkeU5oUWJYeVluR0F2YThWQ00yejZkYnNqeE5nNE44R3dsdDFBbzJUU1k1TmxOc09FMWpkd0RJMzZ5UXoxenlFWjNtd1pIN3Z0TlROQzBKQk9vb0NEci0yYUl5aEVBWmUzclI5ckRwaXZ3Q21wZHhhaW9QRTNVcTFxXzBwR3ZROG9VdG9LX2JQRTNabmdjNHBBUi1uZTBtdGw1UV9MY1NfZ3FlNlZZV28wZ2pJ?oc=5",
-      "publishedAt": "2026-05-12T23:31:40.400843+00:00",
-      "country": "Unknown"
-    }
-  ],
-  "timeline": [
-    {
-      "date": "2026-04-29",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-04-30",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-01",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-02",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-03",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-04",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-05",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-06",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-07",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-08",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-09",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-10",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-11",
-      "cases": 0,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 0,
-      "spreadScore": 0.0
-    },
-    {
-      "date": "2026-05-12",
-      "cases": 11,
-      "deaths": 0,
-      "suspected": 0,
-      "countriesAffected": 2,
-      "spreadScore": 4.77
-    }
+    {"id": "news-1", "title": "ANDV Hantavirus Outbreak on MV Hondius - International Response", "source": "ArcGIS Official Dashboard", "url": "https://www.arcgis.com/apps/dashboards/5c68442d2afc42d7ba2696e4cd393729", "publishedAt": "2026-05-12T14:30:00Z", "country": "Multiple", "summary": "Active ANDV (Andes Virus) hantavirus outbreak linked to MV Hondius expedition cruise ship. 11 confirmed cases, 4 deaths, 27 under monitoring, 173 total exposed across 13 countries."}
   ]
 }
