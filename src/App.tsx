@@ -89,28 +89,6 @@ type DataPayload = {
 
 const DOGE_ADDRESS = 'DFLGr4UwumxE8iMonTNBxq4ZCRFSQmbUwX'
 const SOL_ADDRESS = 'EJRnh4xfA8SxcNZSR6hMsoTFPQnHAqA7sxBan19btcbE'
-const COUNT_API_NAMESPACE = 'hantavirustracker-live'
-const TOTAL_VISITS_KEY = 'visits-total'
-
-type CounterResult = {
-  value: number
-}
-
-const counterDateKey = () => `visits-${new Date().toISOString().slice(0, 10)}`
-
-const getCounter = async (key: string) => {
-  const res = await fetch(`https://api.countapi.xyz/get/${COUNT_API_NAMESPACE}/${key}`)
-  if (!res.ok) throw new Error('Counter API unavailable')
-  const json = (await res.json()) as CounterResult
-  return json.value
-}
-
-const hitCounter = async (key: string) => {
-  const res = await fetch(`https://api.countapi.xyz/hit/${COUNT_API_NAMESPACE}/${key}`)
-  if (!res.ok) throw new Error('Counter API unavailable')
-  const json = (await res.json()) as CounterResult
-  return json.value
-}
 
 function App() {
   const [data, setData] = useState<DataPayload | null>(null)
@@ -119,11 +97,6 @@ function App() {
   const [selected, setSelected] = useState<Case | null>(null)
   const [copyMsg, setCopyMsg] = useState('')
   const [error, setError] = useState('')
-  const [visitorCounts, setVisitorCounts] = useState<{ total: number | null; today: number | null }>({
-    total: null,
-    today: null,
-  })
-  const [visitorCounterOnline, setVisitorCounterOnline] = useState(false)
   const mapRef = useRef<LeafletMap | null>(null)
   const mapContainerRef = useRef<HTMLDivElement>(null)
   const markersRef = useRef<L.CircleMarker[]>([])
@@ -140,31 +113,6 @@ function App() {
       }
     }
     load()
-  }, [])
-
-  useEffect(() => {
-    const syncVisitorCounters = async () => {
-      try {
-        const sessionKey = 'hanta-visitor-counted-v1'
-        const dayKey = counterDateKey()
-        const shouldIncrement = !sessionStorage.getItem(sessionKey)
-
-        const [total, today] = shouldIncrement
-          ? await Promise.all([hitCounter(TOTAL_VISITS_KEY), hitCounter(dayKey)])
-          : await Promise.all([getCounter(TOTAL_VISITS_KEY), getCounter(dayKey)])
-
-        if (shouldIncrement) {
-          sessionStorage.setItem(sessionKey, '1')
-        }
-
-        setVisitorCounts({ total, today })
-        setVisitorCounterOnline(true)
-      } catch {
-        setVisitorCounterOnline(false)
-      }
-    }
-
-    syncVisitorCounters()
   }, [])
 
   const allCases = useMemo(() => {
@@ -349,21 +297,6 @@ function App() {
         <article><h2>{data?.globalStats.totalExposed || 0}</h2><p>Total Exposed</p></article>
         <article><h2>{data?.globalStats.affectedCountries || 0}</h2><p>Affected Countries</p></article>
         <article><h2>{data?.globalStats.fatalityRate || 0}%</h2><p>Fatality Rate</p></article>
-      </section>
-
-      <section className="analytics-grid" aria-label="Visitor analytics">
-        <article>
-          <h2>{visitorCounts.total !== null ? visitorCounts.total.toLocaleString() : '--'}</h2>
-          <p>Total Visits</p>
-        </article>
-        <article>
-          <h2>{visitorCounts.today !== null ? visitorCounts.today.toLocaleString() : '--'}</h2>
-          <p>Visits Today</p>
-        </article>
-        <article>
-          <h2>{visitorCounterOnline ? 'LIVE' : 'OFFLINE'}</h2>
-          <p>Visitor Counter Status</p>
-        </article>
       </section>
 
       <section className="filters">
