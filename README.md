@@ -1,8 +1,12 @@
-# Hantavirus Tracker
+# 🔴 Hantavirus Tracker - Live Real-Time Outbreak Monitor
 
-A comprehensive, real-time global hantavirus outbreak monitoring dashboard powered by automated data collection, interactive mapping, and outbreak analytics.
+> **Free, open-source real-time disease outbreak tracking dashboard**
 
-**Live at**: https://hantavirustracker.github.io
+A comprehensive, real-time global hantavirus outbreak monitoring dashboard with live case tracking, interactive mapping, and news integration from major media outlets (BBC, Reuters, AP, CNN, WHO, Guardian, DW, NYT).
+
+**✨ Live at**: [https://hantavirustracker.github.io](https://hantavirustracker.github.io)
+
+**GitHub**: https://github.com/hantavirustracker/hantavirustracker.github.io
 
 ## Features
 
@@ -359,6 +363,43 @@ Default: `http://localhost:3000`
 - [ ] Slack bot integration
 - [ ] Twitter/X automated updates
 - [ ] Advanced NLP for case extraction
+
+## 🌍 SEO & Spread the Word
+
+Help us reach more people interested in disease tracking and public health:
+
+### Share This Project
+- **ProductHunt**: Submit to launch page
+- **HackerNews**: Tell the community
+- **Reddit**: r/epidemiology, r/publichealth, r/dataisbeautiful
+- **Twitter/LinkedIn**: Tag @WHO @CDC @NIH
+- **Medium/Dev.to**: Write case studies using this tracker
+- **Awesome Lists**: Add to "awesome-epidemiology" and "awesome-health"
+
+### Keywords We're Optimizing For
+- hantavirus tracker
+- real-time disease tracker
+- outbreak map
+- epidemic tracking
+- epidemiological dashboard
+- live health surveillance
+
+### SEO Strategy
+See [SEO_STRATEGY.md](./SEO_STRATEGY.md) for comprehensive backlinks roadmap and [BACKLINKS_CHECKLIST.md](./BACKLINKS_CHECKLIST.md) for immediate submission opportunities.
+
+**Target**: First page Google ranking for "hantavirus tracker" and related terms
+
+## 🔗 Quick Backlink Opportunities
+
+- [ ] Submit to ProductHunt
+- [ ] Post on HackerNews
+- [ ] Write Dev.to article
+- [ ] Reddit posts (3 communities)
+- [ ] Medium story
+- [ ] GitHub awesome-lists
+- [ ] Health tech blogs
+
+See [BACKLINKS_CHECKLIST.md](./BACKLINKS_CHECKLIST.md) for detailed guidance.
 
 ## Donations
 
