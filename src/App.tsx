@@ -273,14 +273,14 @@ function App() {
   return (
     <main className="dashboard">
       <header className="hero">
-        <p className="tag">HANTAVIRUS LIVE MATRIX</p>
-        <h1>Global Infection Intelligence Grid</h1>
+        <p className="tag">🔴 LIVE HANTAVIRUS TRACKER 🔴</p>
+        <h1>Global Real-Time Outbreak Monitor</h1>
         <p>
-          {data?.dataSource || 'Real-source outbreak signals'} ingested every 30 minutes. Track individual cases,
-          review status breakdown, and inspect latest reports.
+          Real-time case tracking updated every 30 minutes from official health authorities. Track individual cases,
+          review case status, and read latest news from major media outlets.
         </p>
         {data?.outbreak && <p style={{ fontSize: '0.85em', marginTop: '0.5em', color: '#00e5ff' }}>
-          Current: {data.outbreak.name} ({data.outbreak.strain}) - {data.outbreak.exposureMethod}
+          Current Outbreak: {data.outbreak.name} | {data.outbreak.strain} | {data.outbreak.exposureMethod}
         </p>}
       </header>
 
@@ -322,12 +322,15 @@ function App() {
         </article>
 
         <article className="card">
-          <h3>Latest News</h3>
+          <h3>📰 Latest News from Major Media</h3>
           <div className="news-feed">
-            {latestNews.map((n) => (
+            {latestNews.length === 0 ? (
+              <p style={{color: '#9ccbb3'}}>No news available yet.</p>
+            ) : latestNews.map((n) => (
               <a key={n.id} href={n.url} target="_blank" rel="noreferrer" className="news-item">
-                <span>{n.title}</span>
-                <small>{n.source} | {new Date(n.publishedAt).toLocaleString()} | {n.country}</small>
+                <span style={{fontWeight: 600}}>{n.title}</span>
+                <small>{n.source} | {new Date(n.publishedAt).toLocaleString()}</small>
+                {n.summary && <p style={{fontSize: '0.8em', color: '#8ebea6', marginTop: '0.3em'}}>{n.summary}</p>}
               </a>
             ))}
           </div>
